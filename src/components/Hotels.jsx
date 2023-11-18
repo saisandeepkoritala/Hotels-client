@@ -19,7 +19,7 @@ const Hotels = () => {
     // },[])
 
     useEffect(()=>{
-        axios.post("http://localhost:5000/getHotels",{
+        axios.post("https://mern-hotels-app.onrender.com/getHotels",{
             searchTerm
         })
         .then((data)=>{dispatch(setHotels(data.data.data.data.result))

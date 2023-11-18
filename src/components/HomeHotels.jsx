@@ -15,7 +15,7 @@ const HomeHotels = () => {
   const [isLoading,SetisLoading]=useState(true);
 
   useEffect(()=>{
-    axios.get("http://localhost:5000/getData")
+    axios.get("https://mern-hotels-app.onrender.com/getData")
     .then((res)=>{dispatch(setHotels(res.data.data.hotels))
     Sethotels(res.data.data.hotels)
     SetisLoading(false)})

@@ -20,7 +20,7 @@ const Detail = () => {
         const formattedDate = `${year}-${month}-${day}`;
         const formattedNextDate = `${year}-${month}-${Number(day)+1}`;
 
-        axios.post("http://localhost:5000/getHotelDetails",{
+        axios.post("https://mern-hotels-app.onrender.com/getHotelDetails",{
         arrival:formattedDate,
         departure:formattedNextDate,
         id:hotel_id.id
