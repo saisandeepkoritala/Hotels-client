@@ -1,8 +1,11 @@
 import React from 'react'
+import Dropdown from "./Dropdown";
 
 const HomeAccordian = () => {
   return (
-    <div>HomeAccordian</div>
+    <div className='accordian'>
+      <Dropdown/>
+    </div>
   )
 }
 

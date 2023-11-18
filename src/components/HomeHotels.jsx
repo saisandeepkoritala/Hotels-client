@@ -2,32 +2,44 @@ import pic1 from "../Images/prologis.png"
 import pic2 from "../Images/realty.png"
 import pic3 from "../Images/tower.png"
 import pic4 from "../Images/equinix.png"
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import axios from "axios";
-import {useDispatch,useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import { setHotels } from "../store/index";
 import {Link} from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 
 const HomeHotels = () => {
 
-  const dispatch = useDispatch();
-  const hotels = useSelector((store)=>store.form.data)
-  console.log(hotels)
+  const [hotels,Sethotels]=useState([]);
+  const [isLoading,SetisLoading]=useState(true);
 
   useEffect(()=>{
     axios.get("http://localhost:5000/getData")
-    .then((res)=>dispatch(setHotels(res.data.data.hotels)))
-    .catch((err)=>console.log("error",err))
+    .then((res)=>{dispatch(setHotels(res.data.data.hotels))
+    Sethotels(res.data.data.hotels)
+    SetisLoading(false)})
+    .catch((err)=>{console.log("error",err)
+    SetisLoading(false)})
   },[])
 
+  const dispatch = useDispatch();
+
+
   const rendered = hotels.map((hotel)=>{
-    const srcimg = hotel.main_photo_url.replace("square60","square300")
+    const srcimg = hotel?.main_photo_url?.replace("square60", "square200") || '';
     return (
-    <Link key={hotel.hotel_id} className="hotel">
-        <img src={srcimg} alt="" />
+    <Link key={hotel.hotel_id} className="hotel" to={`/detail/${hotel.hotel_id}`}>
+        <img src={srcimg} alt="" className="pic"/>
         <p>{hotel.hotel_name}</p>
-        <ReactStars count={5} size={24} value={Math.round(hotel.review_score/2)} activeColor="#ffd700" edit={false}/>
+        <ReactStars
+                count={5}
+                size={24}
+                value={!isNaN(Math.round(hotel.review_score / 2)) ? Math.round(hotel.review_score / 2) : 0}
+                activeColor="#ffd700"
+                edit={false}
+              />
+
         <p>Review - {hotel.review_score}/10</p>
     </Link>
   )})
@@ -45,7 +57,7 @@ const HomeHotels = () => {
         <h3>Popular Residencies</h3>
       </div>
       <div className="hotels">
-        {rendered}
+        {isLoading?<p>Loading bro ....</p>:rendered}
       </div>
     </div>
   )

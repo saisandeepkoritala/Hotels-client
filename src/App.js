@@ -4,6 +4,8 @@ import {useRef } from "react";
 import Home from "./components/Home";
 import Hotels from "./components/Hotels";
 import Favourite from "./components/Favourite";
+import Footer from "./components/Footer";
+import Detail from "./components/Detail";
 
 function App() {
   const Ref=useRef();
@@ -25,10 +27,11 @@ function App() {
           <Route element={<Home />} path="/"/>
           <Route element={<Hotels />} path="/hotels"/>
           <Route element={<Favourite />} path="/favourite"/>
+          <Route element={<Detail />} path="/detail/:id"/>
         </Routes>
       </div>
-      <div>
-        Footer
+      <div className="footer-card">
+        <Footer/>
       </div>
   </BrowserRouter>
 )}

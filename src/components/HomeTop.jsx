@@ -22,7 +22,7 @@ const HomeTop = () => {
                     <p>Happy Customer</p>
                 </div>
                 <div>
-                    <h3>28 <strong>+</strong></h3>
+                    <h3>280 <strong>+</strong></h3>
                     <p>Awards Winning</p>
                 </div>
             </div>
