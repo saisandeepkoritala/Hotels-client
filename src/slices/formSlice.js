@@ -5,7 +5,8 @@ const formSlice =  createSlice({
     initialState:{
         isLoading:false,
         searchTerm:"",
-        data:[]
+        data:[],
+        count:0
     },
     reducers:{
         changeSearchTerm(state,action){
@@ -13,10 +14,13 @@ const formSlice =  createSlice({
         },
         setHotels(state,action){
             state.data = action.payload;
+        },
+        setCount(state,action){
+            state.count=state.count+1;
         }
 
     }
 })
 
 export const formReducer = formSlice.reducer;
-export const {changeSearchTerm ,setHotels} = formSlice.actions;
+export const {changeSearchTerm ,setHotels,setCount} = formSlice.actions;

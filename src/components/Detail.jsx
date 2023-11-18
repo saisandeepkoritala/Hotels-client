@@ -11,17 +11,24 @@ const Detail = () => {
     const [isLoading,SetisLoading]=useState(true);
 
     useEffect(()=>{
+
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = currentDate.getDate().toString().padStart(2, '0');
+
+        const formattedDate = `${year}-${month}-${day}`;
+        const formattedNextDate = `${year}-${month}-${Number(day)+1}`;
+
         axios.post("http://localhost:5000/getHotelDetails",{
-        arrival:"2023-11-20",
-        departure:"2023-11-25",
+        arrival:formattedDate,
+        departure:formattedNextDate,
         id:hotel_id.id
     })
     .then((data)=>{
         console.log(data)
         Setdata(data.data.Hotel_data.data.rooms)
-        console.log("data",data.data.Hotel_data.data.rooms)
         Setother(data.data.Hotel_data.data)
-        console.log("other",data.data.Hotel_data.data)
         SetisLoading(false);
     })
     .catch((err)=>{

@@ -1,6 +1,7 @@
 import {useSelector ,useDispatch} from "react-redux";
 import {changeSearchTerm} from "../store";
 import {useNavigate} from "react-router-dom";
+import { setCount } from "../store";
 const Input = () => {
 
     const navigate = useNavigate();
@@ -8,13 +9,14 @@ const Input = () => {
     const value = useSelector((store)=>store.form.searchTerm);
 
     const handleChange=(value)=>{
+        console.log("hi")
         dispatch(changeSearchTerm(value))
     }
 
     const handleSubmit =(e)=>{
         e.preventDefault();
         navigate("/hotels");
-        console.log("hi")
+        dispatch(setCount());
     }
     return (
         <form onSubmit={handleSubmit}>
