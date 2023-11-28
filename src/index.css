@@ -435,6 +435,24 @@ div.footer-card{
     padding: 1rem;
     border-radius: 10px;
   }
+
+  .routes .detail .nested .summary >a{
+    border:1px solid white;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .routes .detail .nested .summary .link{
+    background-color: rgb(10, 177, 43)
+  }
+  .routes .detail .nested .summary .link:hover{
+    background-color: green;
+  }
+  .routes .detail .nested .summary .red{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .routes .detail .loading{
     color:white;
     font-size: 1rem;
@@ -456,6 +474,15 @@ div.footer-card{
 
   }
 
+  .routes .searchhotels .pics .up{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid white;
+    height: 600px;
+  }
+
   .routes .searchhotels .pics a{
     min-height: 500px;
     max-width: 400px;
@@ -464,6 +491,39 @@ div.footer-card{
 
   .routes .searchhotels .pics a p{
     width:300px;
+  }
+
+  .routes .searchhotels .pics .fav{
+    border:1px solid white;
+    background-color: rgb(50, 223, 50);
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .routes .searchhotels .pics .fav:hover{
+    transform: scale(0.96);
+    background-color: green;
+  }
+
+  .routes .favv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:100%;
+  }
+
+  .routes .favv .favhotel{
+    width:400px;
+    height:500px;
+  }
+
+  .routes .favv .favhotel p{
+    width:300px;
+    color: yellow;
   }
 
 /* DETAIL PAGE */

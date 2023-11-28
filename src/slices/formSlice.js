@@ -6,7 +6,8 @@ const formSlice =  createSlice({
         isLoading:false,
         searchTerm:"",
         data:[],
-        count:0
+        count:0,
+        fav:[]
     },
     reducers:{
         changeSearchTerm(state,action){
@@ -17,10 +18,13 @@ const formSlice =  createSlice({
         },
         setCount(state,action){
             state.count=state.count+1;
+        },
+        setFav(state,action){
+            state.fav=[...state.fav ,action.payload]
         }
 
     }
 })
 
 export const formReducer = formSlice.reducer;
-export const {changeSearchTerm ,setHotels,setCount} = formSlice.actions;
+export const {changeSearchTerm,setHotels,setCount,setFav} = formSlice.actions;
