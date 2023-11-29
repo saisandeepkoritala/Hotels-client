@@ -41,24 +41,24 @@ const Hotels = () => {
         
     }
 
-    const rendered = data.map((hotel)=>{
+    const rendered = data.map((hotel,i)=>{
         const srcimg = hotel?.main_photo_url?.replace("square60", "square400") || '';
         return (
         <div className='up'>
-        <Link key={hotel.hotel_id} className="hotel" to={`/detail/${hotel.hotel_id}`}>
-            <img src={srcimg} alt="" className="pic"/>
-            <p>{hotel.hotel_name}</p>
-            <ReactStars
-                    count={5}
-                    size={24}
-                    value={!isNaN(Math.round(hotel.review_score / 2)) ? Math.round(hotel.review_score / 2) : 0}
-                    activeColor="#ffd700"
-                    edit={false}
-                />
-    
-            <p>Review - {hotel.review_score}/10</p>
-        </Link>
-        <div className='fav' onClick={()=>handleClick(hotel)}>Save</div>
+            <Link key={hotel.hotel_id} className="hotel" to={`/detail/${hotel.hotel_id}`}>
+                <img src={srcimg} alt="" className="pic"/>
+                <p>{hotel.hotel_name}</p>
+                <ReactStars
+                        count={5}
+                        size={24}
+                        value={!isNaN(Math.round(hotel.review_score / 2)) ? Math.round(hotel.review_score / 2) : 0}
+                        activeColor="#ffd700"
+                        edit={false}
+                    />
+        
+                <p>Review - {hotel.review_score}/10</p>
+            </Link>
+            <div className='fav' onClick={()=>handleClick(hotel)}>Save</div>
         </div>
     )})
 

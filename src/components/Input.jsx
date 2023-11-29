@@ -2,6 +2,8 @@ import {useSelector ,useDispatch} from "react-redux";
 import {changeSearchTerm} from "../store";
 import {useNavigate} from "react-router-dom";
 import { setCount } from "../store";
+import { CiLocationOn } from "react-icons/ci";
+
 const Input = () => {
 
     const navigate = useNavigate();
@@ -9,7 +11,6 @@ const Input = () => {
     const value = useSelector((store)=>store.form.searchTerm);
 
     const handleChange=(value)=>{
-        console.log("hi")
         dispatch(changeSearchTerm(value))
     }
 
@@ -20,7 +21,9 @@ const Input = () => {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <input value={value} onChange={(e)=>handleChange(e.target.value)}/>
+            <input value={value} onChange={(e)=>handleChange(e.target.value)} placeholder="Enter location/address.."/>
+            <CiLocationOn className="search-icon" size="25"/>
+            
         </form>
     )
 }

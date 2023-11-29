@@ -21,10 +21,13 @@ const formSlice =  createSlice({
         },
         setFav(state,action){
             state.fav=[...state.fav ,action.payload]
+        },
+        overRideFav(state,action){
+            state.fav=[...action.payload]
         }
 
     }
 })
 
 export const formReducer = formSlice.reducer;
-export const {changeSearchTerm,setHotels,setCount,setFav} = formSlice.actions;
+export const {changeSearchTerm,setHotels,setCount,setFav,overRideFav} = formSlice.actions;
