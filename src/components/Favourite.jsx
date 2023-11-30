@@ -20,6 +20,10 @@ const Favourite = () => {
                 <Link key={hotel.hotel_id} className="favhotel" to={`/detail/${hotel.hotel_id}`}>
                     <img src={srcimg} alt="" className="pic"/>
                     <p>{hotel.hotel_name}</p>
+                    <p>Review - {hotel.review_score}/10</p>
+                    <p>Check in - {hotel.checkin.from}</p>
+                    <p>Check out - {hotel.checkout.until}</p>
+                    <p>City - {hotel.city}</p>
                 </Link>
                 <div className='remove' onClick={()=>handleClick(hotel.hotel_id)}>Remove</div>
             </div>

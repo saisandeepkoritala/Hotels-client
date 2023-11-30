@@ -14,6 +14,7 @@ const formSlice =  createSlice({
             state.searchTerm = action.payload;
         },
         setHotels(state,action){
+            console.log("hello",action.payload)
             state.data = action.payload;
         },
         setCount(state,action){

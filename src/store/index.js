@@ -8,7 +8,7 @@ const store = configureStore({
     }
 })
 
-axios.post("https://mern-hotels-app.onrender.com/getData")
+axios.post("http://localhost:5000/getData")
     .then((response) => {
         // Dispatch the action to set the initial hotels data
         store.dispatch(setHotels(response.data.data.hotels));

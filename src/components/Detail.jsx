@@ -18,9 +18,13 @@ const Detail = () => {
         const day = currentDate.getDate().toString().padStart(2, '0');
 
         const formattedDate = `${year}-${month}-${day}`;
-        const formattedNextDate = `${year}-${month}-${Number(day)+1}`;
+        const nextDate = new Date(currentDate);
+        nextDate.setDate(currentDate.getDate() + 1);
 
-        axios.post("https://mern-hotels-app.onrender.com/getHotelDetails",{
+        // Format the next date as "YYYY-MM-DD"
+        const formattedNextDate = nextDate.toISOString().split('T')[0];
+
+        axios.post("http://localhost:5000/getHotelDetails",{
         arrival:formattedDate,
         departure:formattedNextDate,
         id:hotel_id.id

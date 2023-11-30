@@ -20,7 +20,7 @@ const Hotels = () => {
     },[])
 
     useEffect(()=>{
-        axios.post("https://mern-hotels-app.onrender.com/getHotels",{
+        axios.post("http://localhost:5000/getHotels",{
             searchTerm
         })
         .then((data)=>{dispatch(setHotels(data.data.data.data.result))
@@ -40,7 +40,6 @@ const Hotels = () => {
         }
         
     }
-
     const rendered = data.map((hotel,i)=>{
         const srcimg = hotel?.main_photo_url?.replace("square60", "square400") || '';
         return (
@@ -57,6 +56,10 @@ const Hotels = () => {
                     />
         
                 <p>Review - {hotel.review_score}/10</p>
+                <p>Review Score - {hotel.review_score_word}</p>
+                <p>Check in - {hotel.checkin.from}</p>
+                <p>Check out - {hotel.checkout.until}</p>
+                <p>City - {hotel.city}</p>
             </Link>
             <div className='fav' onClick={()=>handleClick(hotel)}>Save</div>
         </div>
