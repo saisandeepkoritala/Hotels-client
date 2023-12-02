@@ -7,6 +7,7 @@ import ReactStars from "react-rating-stars-component";
 import Input from "./Input";
 import { RotatingLines } from 'react-loader-spinner';
 import { setFav } from '../store/index';
+import {ToastContainer,toast} from "react-toastify";
 
 const Hotels = () => {
     const [isLoading,SetisLoading]=useState(true);
@@ -20,7 +21,7 @@ const Hotels = () => {
     },[])
 
     useEffect(()=>{
-        axios.post("http://localhost:5000/getHotels",{
+        axios.post("https://mern-hotels-app.onrender.com/getHotels",{
             searchTerm
         })
         .then((data)=>{dispatch(setHotels(data.data.data.data.result))
@@ -34,12 +35,27 @@ const Hotels = () => {
         const duplicate = fav.find((hotel)=>hotel.hotel_id===liked.hotel_id)
         if(!duplicate){
             dispatch(setFav(liked))
+            notify()
         }
         else{
             console.log("duplicate bro")
+            notifyError()
         }
         
     }
+
+    const notifyError=()=>{
+        toast.error("Already Saved !!",{
+            position:toast.POSITION.TOP_RIGHT
+        })
+    }
+
+    const notify=()=>{
+        toast.success("Hotel Saved !!",{
+            position:toast.POSITION.TOP_RIGHT
+        })
+    }
+
     const rendered = data.map((hotel,i)=>{
         const srcimg = hotel?.main_photo_url?.replace("square60", "square400") || '';
         return (
@@ -79,6 +95,7 @@ const Hotels = () => {
             />
             :rendered}
             </div>
+            <ToastContainer />
         </div>
         
     )

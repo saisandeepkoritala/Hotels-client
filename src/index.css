@@ -491,7 +491,7 @@ div.footer-card{
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid white;
-    height: 600px;
+    height: 700px;
   }
 
   .routes .searchhotels .pics a{
@@ -531,10 +531,10 @@ div.footer-card{
 
   .routes .favv .fav-in{
     border:1px solid white;
-    min-height: 70vh;
+    height: 500px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:space-between;
     flex-direction: column;
   }
   .routes .favv .fav-in .favhotel{
@@ -725,6 +725,9 @@ img.pic{
   width: 200px;
 }
 
+.routes .detail .nested{
+  align-items: center;
+}
 .routes .detail .nested .nested-images {
   max-width: 250px;
 }

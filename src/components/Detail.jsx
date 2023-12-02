@@ -24,7 +24,7 @@ const Detail = () => {
         // Format the next date as "YYYY-MM-DD"
         const formattedNextDate = nextDate.toISOString().split('T')[0];
 
-        axios.post("http://localhost:5000/getHotelDetails",{
+        axios.post("https://mern-hotels-app.onrender.com/getHotelDetails",{
         arrival:formattedDate,
         departure:formattedNextDate,
         id:hotel_id.id

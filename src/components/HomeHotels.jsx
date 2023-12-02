@@ -8,6 +8,7 @@ import {useDispatch} from "react-redux";
 import { setHotels } from "../store/index";
 import {Link} from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import { RotatingLines } from 'react-loader-spinner';
 
 const HomeHotels = () => {
 
@@ -15,7 +16,7 @@ const HomeHotels = () => {
   const [isLoading,SetisLoading]=useState(true);
 
   useEffect(()=>{
-    axios.get("http://localhost:5000/getData")
+    axios.get("https://mern-hotels-app.onrender.com/getData")
     .then((res)=>{dispatch(setHotels(res.data.data.hotels))
     Sethotels(res.data.data.hotels)
     SetisLoading(false)})
@@ -57,7 +58,13 @@ const HomeHotels = () => {
         <h3>Popular Residencies</h3>
       </div>
       <div className="hotels">
-        {isLoading?<p>Loading bro ....</p>:rendered}
+        {isLoading?<RotatingLines
+                    strokeColor="grey"
+                    strokeWidth="5"
+                    animationDuration="5"
+                    width="96"
+                    visible={true}
+            />:rendered}
       </div>
     </div>
   )

@@ -6,6 +6,7 @@ import Hotels from "./components/Hotels";
 import Favourite from "./components/Favourite";
 import Footer from "./components/Footer";
 import Detail from "./components/Detail";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const Ref=useRef();

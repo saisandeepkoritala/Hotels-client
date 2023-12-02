@@ -2,16 +2,27 @@ import React from 'react';
 import { useSelector ,useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import {overRideFav} from "../store"
+import {ToastContainer,toast} from "react-toastify";
+
+
 const Favourite = () => {
 
     const dispatch = useDispatch();
     const fav = useSelector((store)=>store.form.fav)
 
     const handleClick= (id)=>{
+        notify()
         const filteredhotels = fav.filter((hotel)=>hotel.hotel_id!==id)
         console.log(filteredhotels)
         dispatch(overRideFav(filteredhotels))
     }
+
+    const notify=()=>{
+        toast.success("Item removed !!",{
+            position:toast.POSITION.TOP_RIGHT
+        })
+    }
+
 
     const render = fav.map((hotel)=>{
         const srcimg = hotel?.main_photo_url?.replace("square60", "square300") || '';
@@ -29,7 +40,10 @@ const Favourite = () => {
             </div>
     )})
     return (
-    <div className='favv'>{render}</div>
+    <div className='favv'>
+        {render}
+        <ToastContainer />
+    </div>
     )
 }
 
