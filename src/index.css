@@ -193,6 +193,7 @@ input {
   justify-content: center;
   flex-wrap: wrap;
   gap:25px;
+  width:100%;
 }
 
 .routes .home .homehotels .hotels .hotel {
@@ -529,6 +530,14 @@ div.footer-card{
     gap:10px;
   }
 
+  .routes .favv div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+
   .routes .favv .fav-in{
     border:1px solid white;
     height: 500px;
@@ -556,6 +565,12 @@ div.footer-card{
     justify-content: center;
     padding: 5px;
   }
+
+  .routes .favv .duck{
+    width:400px;
+    height:400px;
+  }
+
 
 /* DETAIL PAGE */
 
@@ -803,6 +818,11 @@ img.pic{
 
 .routes .favv .fav-in{
   height: 100%;
+}
+
+.routes .favv .duck{
+  width:200px;
+  height:200px;
 }
 
 }

@@ -45,15 +45,19 @@ const Hotels = () => {
     }
 
     const notifyError=()=>{
-        toast.error("Already Saved !!",{
-            position:toast.POSITION.TOP_RIGHT
-        })
+        toast.info("Already Saved", {
+            progressStyle: { background: "yellow" },
+            theme: 'colored',
+            style: { background: "black", color: "yellow" },
+        });
     }
 
     const notify=()=>{
-        toast.success("Hotel Saved !!",{
-            position:toast.POSITION.TOP_RIGHT
-        })
+        toast.info("Hotel Saved", {
+            progressStyle: { background: "green" },
+            theme: 'colored',
+            style: { background: "black", color: "green" },
+        });
     }
 
     const rendered = data.map((hotel,i)=>{

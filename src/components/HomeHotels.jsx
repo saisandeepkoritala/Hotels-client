@@ -21,7 +21,7 @@ const HomeHotels = () => {
     Sethotels(res.data.data.hotels)
     SetisLoading(false)})
     .catch((err)=>{console.log("error",err)
-    SetisLoading(false)})
+    SetisLoading(true)})
   },[])
 
   const dispatch = useDispatch();
@@ -62,8 +62,8 @@ const HomeHotels = () => {
                     strokeColor="grey"
                     strokeWidth="5"
                     animationDuration="5"
-                    width="96"
-                    visible={true}
+                    width="50"
+                    
             />:rendered}
       </div>
     </div>
