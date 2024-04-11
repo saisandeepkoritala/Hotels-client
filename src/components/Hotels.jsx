@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {useDispatch,useSelector} from "react-redux";
 import axios from "axios";
 import { setHotels } from "../store/index";
@@ -60,7 +60,7 @@ const Hotels = () => {
         });
     }
 
-    const rendered = data.map((hotel,i)=>{
+    const rendered = data?.map((hotel,i)=>{
         const srcimg = hotel?.main_photo_url?.replace("square60", "square400") || '';
         return (
         <div className='up'>
@@ -89,15 +89,14 @@ const Hotels = () => {
         <div className='searchhotels'>
             <Input />
             <div className='pics'>
-            {isLoading?
+            {rendered ||
             <RotatingLines
                     strokeColor="grey"
                     strokeWidth="5"
                     animationDuration="5"
                     width="96"
                     visible={true}
-            />
-            :rendered}
+            />}
             </div>
             <ToastContainer />
         </div>

@@ -224,10 +224,10 @@ div.outer{
   align-items: center;
   justify-content: space-between;
   border:1px solid white;
+  border-radius: 10px;
   width:100%;
   padding: 5px;
 }
-
 
 div.answer {
   width:300px;
@@ -244,7 +244,7 @@ div.icons{
   justify-content: center;
 }
 div.query p{
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 div.answer{
@@ -276,6 +276,7 @@ div.card-top{
   align-items: center;
   justify-content: center;
   border: 1px solid white;
+  border-radius: 10px;
   gap:10px;
 }
 
@@ -296,7 +297,7 @@ div.contact{
 }
 
 .routes .home .contact .bottom .card{
-  width:250px;
+  width:200px;
   height:250px;
 }
 
@@ -304,6 +305,11 @@ div.contact{
   width:100%;
   height:100%;
 }
+
+.routes .home .contact .bottom .card .card-top p{
+  font-size: 0.85rem;
+}
+
 .routes .home .contact .bottom .card div button{
   width:250px;
   height:75px;
