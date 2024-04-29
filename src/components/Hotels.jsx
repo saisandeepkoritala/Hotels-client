@@ -5,7 +5,7 @@ import { setHotels } from "../store/index";
 import { Link } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
 import Input from "./Input";
-import { RotatingLines } from 'react-loader-spinner';
+import {ColorRing} from 'react-loader-spinner';
 import { setFav } from '../store/index';
 import {ToastContainer,toast} from "react-toastify";
 
@@ -28,7 +28,9 @@ const Hotels = () => {
         SetisLoading(false)
     })
         .catch((err)=>{console.log("error",err)
-        SetisLoading(false)})
+        SetisLoading(false)
+    }
+        )
     },[count])
 
     const handleClick = (liked)=>{
@@ -61,11 +63,15 @@ const Hotels = () => {
     }
 
     const rendered = data?.map((hotel,i)=>{
-        const srcimg = hotel?.main_photo_url?.replace("square60", "square400") || '';
+        const srcimg = hotel?.main_photo_url?.replace("square60", "square400");
+
         return (
         <div className='up'>
             <Link key={hotel.hotel_id} className="hotel" to={`/detail/${hotel.hotel_id}`}>
-                <img src={srcimg} alt="" className="pic"/>
+                <img src={srcimg} alt="" className="pic" onError={(e)=>{
+                    e.currentTarget.src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png";
+                    e.currentTarget.onerror = null;
+                }}/>
                 <p>{hotel.hotel_name}</p>
                 <ReactStars
                         count={5}
@@ -89,13 +95,16 @@ const Hotels = () => {
         <div className='searchhotels'>
             <Input />
             <div className='pics'>
-            {rendered ||
-            <RotatingLines
-                    strokeColor="grey"
-                    strokeWidth="5"
-                    animationDuration="5"
-                    width="96"
-                    visible={true}
+            {rendered}
+            {isLoading &&
+            <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="color-ring-loading"
+            wrapperStyle={{}}
+            wrapperClass="color-ring-wrapper"
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
             />}
             </div>
             <ToastContainer />
